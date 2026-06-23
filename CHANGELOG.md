@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 — 2026-06-23
+
+### Fixed
+
+- npm `bin` entry: replaced `./bin/stdio.mjs` with `bin/llm-wiki-mcp.js` so `npx @jlnkrth/llm-wiki-mcp` works (npm was stripping the `.mjs` bin shim in 0.1.0)
+
 ## 0.1.0 — 2026-06-23
 
 First public release.

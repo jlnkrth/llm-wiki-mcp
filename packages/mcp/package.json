@@ -1,13 +1,14 @@
 {
   "name": "@jlnkrth/llm-wiki-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for LLM-maintained markdown wikis (Karpathy LLM Wiki pattern)",
   "type": "module",
   "bin": {
-    "llm-wiki-mcp": "./bin/stdio.mjs"
+    "llm-wiki-mcp": "bin/llm-wiki-mcp.js"
   },
   "files": [
     "bin",
+    "src",
     "tools.mjs",
     "http.mjs"
   ],

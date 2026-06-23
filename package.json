@@ -9,7 +9,7 @@
     "packages/mcp"
   ],
   "scripts": {
-    "start:stdio": "node packages/mcp/bin/stdio.mjs",
+    "start:stdio": "node packages/mcp/bin/llm-wiki-mcp.js",
     "start:api": "node packages/api/server.mjs",
     "start:http-mcp": "node packages/mcp/http.mjs",
     "test": "node --test packages/core/test/*.test.mjs packages/mcp/test/*.test.mjs",

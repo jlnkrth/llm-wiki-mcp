@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-// Local stdio MCP — reads/writes a wiki directory on disk via @llm-wiki/core.
+// Local stdio MCP — reads/writes a wiki directory on disk via @jlnkrth/llm-wiki-core.
 // Env: WIKI_DIR (required) — path to the wiki repo root (contains wiki/, index.md, etc.)
 
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
@@ -24,7 +23,7 @@ const store = await createWikiStore({
 
 store.startRefreshInterval();
 
-const server = new McpServer({ name: 'llm-wiki', version: '0.1.0' });
+const server = new McpServer({ name: 'llm-wiki', version: '0.1.1' });
 registerWikiTools(server, {
   types: store.types,
   handlers: handlersFromStore(store),

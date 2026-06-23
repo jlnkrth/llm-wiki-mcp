@@ -39,7 +39,7 @@ Merge into `~/.cursor/mcp.json` (use absolute paths):
   "mcpServers": {
     "llm-wiki": {
       "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/llm-wiki-mcp/packages/mcp/bin/stdio.mjs"],
+      "args": ["/ABSOLUTE/PATH/TO/llm-wiki-mcp/packages/mcp/bin/llm-wiki-mcp.js"],
       "env": { "WIKI_DIR": "/tmp/my-wiki" }
     }
   }
