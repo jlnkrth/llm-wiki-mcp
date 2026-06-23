@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "llm-wiki": {
+      "type": "http",
+      "url": "http://localhost/wiki-mcp/mcp",
+      "headers": {
+        "X-Api-Key": "YOUR_MCP_API_KEY"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+# Self-contained LLM Wiki MCP deployment.
+#
+# Three services:
+#   caddy         reverse proxy (ports 80/443)
+#   llm-wiki-api  Fastify REST + git write layer
+#   llm-wiki-mcp  Streamable HTTP MCP (X-Api-Key auth)
+#
+# From deploy/:
+#   cp .env.example .env && edit .env
+#   docker compose up -d --build
+
+name: llm-wiki
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - llm-wiki-mcp
+    networks: [wiki-net]
+
+  llm-wiki-api:
+    build:
+      context: ..
+      dockerfile: packages/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      WIKI_CONTENT_DIR: /wiki
+      PORT: "8085"
+    volumes:
+      - ${WIKI_CONTENT_HOST_PATH:-../examples/starter-wiki}:/wiki:rw
+    networks: [wiki-net]
+    expose:
+      - "8085"
+
+  llm-wiki-mcp:
+    build:
+      context: ..
+      dockerfile: packages/mcp/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      WIKI_API_URL: http://llm-wiki-api:8085
+      PORT: "8086"
+      MCP_API_KEY: ${MCP_API_KEY:?set MCP_API_KEY in deploy/.env}
+      MCP_ALLOWED_ORIGINS: ${MCP_ALLOWED_ORIGINS:-}
+    depends_on:
+      - llm-wiki-api
+    networks: [wiki-net]
+    expose:
+      - "8086"
+
+networks:
+  wiki-net:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:

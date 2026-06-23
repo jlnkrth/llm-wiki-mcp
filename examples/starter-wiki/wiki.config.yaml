@@ -1,0 +1,12 @@
+types:
+  - entities
+  - concepts
+  - sources
+  - synthesis
+  - topics
+git:
+  enabled: true
+  branch: main
+  commit_prefix: "wiki:"
+search:
+  refresh_interval_ms: 300000

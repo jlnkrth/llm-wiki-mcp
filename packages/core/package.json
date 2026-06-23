@@ -1,0 +1,42 @@
+{
+  "name": "@jlnkrth/llm-wiki-core",
+  "version": "0.1.0",
+  "description": "Core wiki loader, search, and write logic for LLM Wiki MCP",
+  "type": "module",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "wiki-store.mjs",
+    "raw-reader.mjs",
+    "config.mjs",
+    "constants.mjs",
+    "index-utils.mjs"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepublishOnly": "node --test test/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlnkrth/llm-wiki-mcp.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "llm-wiki",
+    "markdown",
+    "knowledge-base",
+    "mcp"
+  ],
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "minisearch": "^7.1.0",
+    "yaml": "^2.8.0"
+  },
+  "license": "MIT",
+  "author": "Julian Kreth"
+}

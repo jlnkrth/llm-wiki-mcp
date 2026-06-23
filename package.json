@@ -1,0 +1,23 @@
+{
+  "name": "llm-wiki-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for LLM-maintained markdown wikis (Karpathy LLM Wiki pattern)",
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/api",
+    "packages/mcp"
+  ],
+  "scripts": {
+    "start:stdio": "node packages/mcp/bin/stdio.mjs",
+    "start:api": "node packages/api/server.mjs",
+    "start:http-mcp": "node packages/mcp/http.mjs",
+    "test": "node --test packages/core/test/*.test.mjs packages/mcp/test/*.test.mjs",
+    "test:smoke": "node scripts/smoke-test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "author": "Julian Kreth"
+}

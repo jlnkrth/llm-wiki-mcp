@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "llm-wiki": {
+      "command": "npx",
+      "args": ["-y", "@jlnkrth/llm-wiki-mcp"],
+      "env": {
+        "WIKI_DIR": "/ABSOLUTE/PATH/TO/my-wiki"
+      }
+    }
+  }
+}

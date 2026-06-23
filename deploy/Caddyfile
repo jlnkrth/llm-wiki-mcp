@@ -1,0 +1,22 @@
+# LLM Wiki MCP deployment — Caddy + wiki-api + llm-wiki-mcp
+#
+# Replace :80 block with your domain for automatic HTTPS:
+#   your-domain.example {
+#     ...
+#   }
+
+:80 {
+	encode gzip
+	log {
+		output stdout
+		format console
+	}
+
+	handle_path /wiki-mcp/* {
+		reverse_proxy llm-wiki-mcp:8086
+	}
+
+	handle {
+		respond "LLM Wiki MCP. Use /wiki-mcp/mcp." 404
+	}
+}
