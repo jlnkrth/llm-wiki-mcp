@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "MCP server for LLM-maintained markdown wikis (Karpathy LLM Wiki pattern)",
   "type": "module",
+  "bin": {
+    "llm-wiki-mcp": "./packages/mcp/bin/llm-wiki-mcp.js"
+  },
   "workspaces": [
     "packages/core",
     "packages/api",

@@ -12,6 +12,28 @@ npm run test:smoke  # integration smoke test (temp wiki dir)
 
 Release gate: both must pass before publishing.
 
+### Troubleshooting `sh: llm-wiki-mcp: command not found`
+
+This usually means a **stale `node_modules/.bin` symlink** after upgrading (e.g. still pointing at deleted `bin/stdio.mjs`). Fix:
+
+```bash
+rm -f node_modules/.bin/llm-wiki-mcp
+npm install
+```
+
+Or from inside the repo, skip `npx` and use:
+
+```bash
+WIKI_DIR=/path/to/my-wiki npm run start:stdio
+```
+
+To test the **published** npm package, run `npx` from outside the repo (e.g. `/tmp`) or pass an explicit version after clearing cache:
+
+```bash
+npx clear-npx-cache  # if available on your npm version
+WIKI_DIR=/path/to/my-wiki npx -y @jlnkrth/llm-wiki-mcp@0.1.1
+```
+
 ## Manual Cursor smoke test
 
 ### 1. Prepare a wiki
